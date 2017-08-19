@@ -1,0 +1,34 @@
+<h1>Current Order #100<%= @order.id if @order.present? %></h1>
+  <% if @order.present? %>
+    <p>Name: <%=@order.name %></p>
+    <p>Email: <%=@order.email %></p>
+    <p>Address: <%=@order.address %></p>
+    <p>Order Status: <%=@order.status %></p>
+    <table class="table">
+      <thead>
+        <th>Product Name:</th>
+        <th>Product Quantity</th>
+        <th>Unit Price</th>
+        <th>Amount</th>
+      </thead>
+      <tbody>
+        <% @order.order_lists.each do |order|%>
+          <tr>
+            <td><%= order.product.name %></td>
+            <td><%= order.quantity %></td>
+            <td><%= order.price %></td>
+            <td><%= order.quantity.to_i * order.price.to_f %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td></td>
+          <td><b>Total Quantity = <%= @order.total_quantity %></b></td>
+          <td></td>
+          <td><b>Total Price <%= number_to_currency(@order.total_price) %></b></td>
+        </tr>
+      </tbody>
+    </table>
+  <% else %>
+    <p>Order is not present.Please try again.</p>
+  <% end %>
+

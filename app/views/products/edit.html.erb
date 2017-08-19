@@ -1,0 +1,12 @@
+<% provide(:title, "Edit user") %>
+<h1>Update Product</h1>
+
+<%= form_for :product, url: product_path(id: @product.id), :method => :put, :html => {:multipart => true} do |f| %>
+
+  <%= render(:partial => "form", :locals => {:f => f}) %>
+
+  <p>
+    <%= f.submit :"Save Changes" %>
+  </p>
+  
+<% end %>

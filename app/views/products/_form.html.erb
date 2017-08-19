@@ -1,0 +1,25 @@
+<p>
+  <%= f.label :product_name %><br>
+  <%= f.text_field :name %>
+</p>
+
+<p>
+  <%= f.label :product_price %><br>
+  <%= f.text_field :price %>
+</p>
+
+<p>
+  <%= f.label :product_quantity %><br>
+  <%= f.text_field :quantity %>
+</p>
+
+<p>
+  <%= f.label :product_description %><br>
+  <%= f.text_area :description %>
+</p>
+
+<div class="form-group">
+  <%= f.fields_for :picture_attributes do |image_upload| %> 
+    <%= image_upload.file_field :image %>
+   <% end %>
+</div>

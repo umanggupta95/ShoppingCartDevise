@@ -1,0 +1,44 @@
+<% if @cart.cart_products.present? %>
+<h2>Cart show</h2>
+  <table class="table">
+    <thead>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Total Price</th>
+      <th>Update Product Quantity</th>
+      <th>Delete</th>
+    </thead>
+    <tbody>    
+      <% @cart.cart_products.each do |cart_product| %>
+        <tr>
+          <td><%= cart_product.product.name %></td>
+          <td><%= number_to_currency(cart_product.product.price) %></td>
+          <td><%= cart_product.quantity %></td>
+          <td><%= number_to_currency(cart_product.total_price) %></td>
+          <td>
+            <%= form_for :cart, :url => cart_path, method: :put do |f| %>
+              <%= f.number_field :quantity , min: 1 , max: cart_product.product.quantity, value: 1, number: true%>
+              <%= f.hidden_field :id, :value => cart_product.product.id %>
+              <%= f.submit "Update Quantity"%>
+            <% end %>
+          </td>
+          <td><%= link_to "Delete Product", cart_path(cart_product), method: :delete,:data => {:confirm => 'Are you sure?'} %></td>
+          
+        </tr>
+      <% end %>
+      <%if @cart.cart_products.present? %>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Total: <%= number_to_currency(@cart.total) %></td>
+          <td><b><%= button_to "Proceed to checkout", new_order_path,:class => "inbox-sf-add-btn tip", method: :get%><br></b></td>
+        </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+<% else %>
+<p><b>Your Cart is empty.</b></p>
+<% end %>

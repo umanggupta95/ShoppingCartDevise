@@ -1,0 +1,28 @@
+<h2>Your order has been successfully placed.Find the details below</h2>
+<p>Name: <%= @order.name %></p>
+<p>Address:<%= @order.address %></p>
+<p>Status:<%= @order.status %></p>
+<table class="table">
+  <thead>
+    <th>Product Name:</th>
+    <th>Product Quantity</th>
+    <th>Unit Price</th>
+    <th>Amount</th>
+  </thead>
+  <tbody>
+    <% @order.order_lists.each do |order|%>
+      <tr>
+        <td><%= order.product.name %></td>
+        <td><%= order.quantity %></td>
+        <td><%= order.price %></td>
+        <td><%= order.quantity.to_i * order.price.to_f %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td></td>
+      <td><b>Total Quantity = <%= @order.total_quantity %></b></td>
+      <td></td>
+      <td><b>Total Price <%= number_to_currency(@order.total_price) %></b></td>
+    </tr>
+  </tbody>
+</table>

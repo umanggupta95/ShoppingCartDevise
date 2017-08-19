@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: umanggupta95
+  api_key: '438313366772568'
+  api_secret: wiHL4avCcwN2yPJtAixc7eldQA4
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: umanggupta95
+  api_key: '438313366772568'
+  api_secret: wiHL4avCcwN2yPJtAixc7eldQA4
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: umanggupta95
+  api_key: '438313366772568'
+  api_secret: wiHL4avCcwN2yPJtAixc7eldQA4
+  enhance_image_tag: true
+  static_image_support: false

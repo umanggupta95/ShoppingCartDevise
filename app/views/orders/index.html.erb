@@ -1,0 +1,20 @@
+<h2>All Orders</h2>
+<table class="table">
+  <thead>
+    <th>Order ID</th>
+    <th>Quantity</th>
+    <th>Total Price</th>
+  </thead>
+  <tbody>    
+    <% if @orders.present? %> 
+      <% @orders.each do |order| %>
+        <% next if order.total_quantity == 0 %>
+        <tr>
+          <td><%= link_to "#100#{order.id}",order_path(order.id)%></td>
+          <td><%= order.total_quantity  %></td>
+          <td><%= number_to_currency(order.total_price) %></td>
+        </tr>
+      <% end %> 
+    <% end %>
+  </tbody>
+</table>
